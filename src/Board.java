@@ -46,6 +46,7 @@ public class Board {
     }
 
     boolean solve() {
+        // Base case. All queens have been place.
         if (this.placedQueens == this.n)
             return true;
 
@@ -58,11 +59,10 @@ public class Board {
                 this.placeQueen(currentRow, i);
 
                 // Try and recursively place the remaining queens
-                if (!this.solve()) {
-                    this.clearQueen(currentRow, i);
-                } else {
+                if (this.solve())
                     return true;
-                }
+
+                this.clearQueen(currentRow, i);
             }
         }
 
